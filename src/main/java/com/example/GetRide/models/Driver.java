@@ -1,10 +1,10 @@
 package com.example.GetRide.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -12,22 +12,30 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+     int id;
 
     @Column(name = "full_name")
-    private String name;
+     String name;
 
-    private int age;
-
-    @Column(unique = true, nullable = false)
-    private int mobileNo;
+     int age;
 
     @Column(unique = true, nullable = false)
-    private String drivingLicense;
+     int mobileNo;
 
+    @Column(unique = true, nullable = false)
+     String drivingLicense;
+
+    @OneToOne(mappedBy = "driver")
+     Cab cab;
+
+
+
+    @OneToMany(mappedBy = "driver")
+     List<Booking> bookings;
 
 }

@@ -1,11 +1,15 @@
 package com.example.GetRide.service;
 
+import com.example.GetRide.Enum.Gender;
+import com.example.GetRide.Transformer.CoustomerTransformer;
 import com.example.GetRide.dtos.request.CoustomerRequest;
+import com.example.GetRide.dtos.request.response.CoustomerResponse;
 import com.example.GetRide.models.Coustomer;
 import com.example.GetRide.repo.CoustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,24 +20,26 @@ public class CoustomerService {
 
 
 
-    public Coustomer getCoustomer(String email) {
-        return coustomerRepo.findByEmailId(email);
+    public CoustomerResponse getCoustomer(String email) {
+         Coustomer savedCoustomer = coustomerRepo.findByEmailId(email);
+        return CoustomerTransformer.coustomerToCoustomerResponse(savedCoustomer);
     }
 
-    public String addCoustomer(CoustomerRequest coustomerRequest) {
-        Coustomer coustomer = new Coustomer();
-
-        coustomer.setAge(coustomerRequest.getAge());
-        coustomer.setName(coustomerRequest.getName());
-        coustomer.setNumber(coustomerRequest.getNumber());
-        coustomer.setGender(coustomerRequest.getGender());
-        coustomer.setEmailId(coustomerRequest.getEmailId());
-
+    public CoustomerResponse addCoustomer(CoustomerRequest coustomerRequest) {
+        Coustomer coustomer = CoustomerTransformer.coustomerRequestToCoustomer(coustomerRequest);
         Coustomer savedCoustomer = coustomerRepo.save(coustomer);
-        return "Coustomer Added Successfully";
+        return CoustomerTransformer.coustomerToCoustomerResponse(coustomer);
     }
 
-    public List<Coustomer> getAllByGenderandAgeGreaterThen(String gender, int age) {
-        return coustomerRepo.getAllByGenderandAgeGreaterThen(gender, age);
+    public List<CoustomerResponse> getAllByGenderandAgeGreaterThen(Gender gender, int age) {
+        List<Coustomer> saveCoustomer = coustomerRepo.getAllByGenderandAgeGreaterThen(gender, age);
+        List<CoustomerResponse> coustomerResponses = new ArrayList<>();
+        for(Coustomer coustomer : saveCoustomer){
+            coustomerResponses.add(CoustomerTransformer.coustomerToCoustomerResponse(coustomer));
+        }
+        return coustomerResponses;
     }
+
+
+
 }

@@ -2,10 +2,8 @@ package com.example.GetRide.models;
 
 import com.example.GetRide.Enum.BookingStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
@@ -16,28 +14,36 @@ import java.util.Date;
 @Setter
 @Getter
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+     int id;
 
     @Column(unique = true, nullable = false)
-    private String bookingId;
+     String bookingId;
 
-    private String pickup;
+     String pickup;
 
-    private String dropLocation;
+     String dropLocation;
 
-    private BookingStatus bookingStatus;
+     BookingStatus bookingStatus;
 
 
-    private double totalDistance;
+     double totalDistance;
 
-    private double totalFare;
+     double totalFare;
 
     @CreationTimestamp
-    private Date date;
+     Date date;
 
+    @ManyToOne
+    @JoinColumn
+     Coustomer coustomer;
+
+    @ManyToOne
+    @JoinColumn
+     Driver driver;
 
 }

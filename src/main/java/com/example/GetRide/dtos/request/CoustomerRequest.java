@@ -1,15 +1,13 @@
 package com.example.GetRide.dtos.request;
 
 import com.example.GetRide.Enum.Gender;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class CoustomerRequest {
     private int age;
     private String name;

@@ -2,10 +2,8 @@ package com.example.GetRide.models;
 
 import com.example.GetRide.Enum.CabType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.springframework.web.service.annotation.GetExchange;
 
 
@@ -14,21 +12,26 @@ import org.springframework.web.service.annotation.GetExchange;
 @Setter
 @Getter
 @Entity
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Cab {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+     int id;
 
 
     @Column(unique = true, nullable = false)
-    private String cabNumber;
+     String cabNumber;
 
-    private CabType cabType;
+     CabType cabType;
 
-    private double farePerKm;
+     double farePerKm;
 
-    private boolean booked;
+     boolean booked;
+
+    @OneToOne
+    @JoinColumn
+     Driver driver;
 
 
 }

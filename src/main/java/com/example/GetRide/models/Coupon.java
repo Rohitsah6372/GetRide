@@ -1,10 +1,8 @@
 package com.example.GetRide.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,14 +10,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "coupon")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Coupon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+     int id;
 
-    private String CouponCode;
+     String CouponCode;
 
 
-    private int percentageDis;
+     int percentageDis;
 }
