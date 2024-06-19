@@ -1,6 +1,7 @@
 package com.example.GetRide.Transformer;
 
 import com.example.GetRide.dtos.request.CabRequest;
+import com.example.GetRide.dtos.request.response.CabResponse;
 import com.example.GetRide.models.Cab;
 
 public class CabTransformer {
@@ -14,4 +15,13 @@ public class CabTransformer {
                 .build();
     }
 
+    public static CabResponse cabToCabResponse(Cab cab) {
+        return CabResponse.builder()
+                .cabNumber(cab.getCabNumber())
+                .cabType(cab.getCabType())
+                .farePerKm(cab.getFarePerKm())
+                .booked(cab.isBooked())
+                .build();
+
+    }
 }
