@@ -14,6 +14,7 @@ import java.util.Date;
 @Setter
 @Getter
 @Entity
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Booking {
 
@@ -25,25 +26,26 @@ public class Booking {
      String bookingId;
 
      String pickup;
-
      String dropLocation;
 
+     @Enumerated(EnumType.STRING)
      BookingStatus bookingStatus;
 
-
      double totalDistance;
-
      double totalFare;
 
-    @CreationTimestamp
-     Date date;
+     @CreationTimestamp
+     Date bookedAt;
 
-    @ManyToOne
-    @JoinColumn
-     Coustomer coustomer;
-
-    @ManyToOne
-    @JoinColumn
-     Driver driver;
+//    @CreationTimestamp
+//     Date date;
+//
+//    @ManyToOne
+//    @JoinColumn
+//     Customer coustomer;
+//
+//    @ManyToOne
+//    @JoinColumn
+//     Driver driver;
 
 }

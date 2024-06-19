@@ -2,6 +2,7 @@ package com.example.GetRide.dtos.request.response;
 
 import com.example.GetRide.Enum.Gender;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 
 @AllArgsConstructor
@@ -9,11 +10,12 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class CoustomerResponse {
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class CustomerResponse {
 
-    private String name;
+     String name;
 
-    private String emailId;
+      String emailId;
 
-    private Gender gender;
+      Gender gender;
 }

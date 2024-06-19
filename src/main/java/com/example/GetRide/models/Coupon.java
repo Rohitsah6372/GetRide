@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @Getter
 @Setter
+@Builder
 @Table(name = "coupon")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Coupon {
@@ -18,7 +19,6 @@ public class Coupon {
      int id;
 
      String CouponCode;
-
 
      int percentageDis;
 }

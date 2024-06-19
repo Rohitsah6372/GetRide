@@ -2,18 +2,19 @@ package com.example.GetRide.dtos.request;
 
 import com.example.GetRide.Enum.Gender;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Builder
-public class CoustomerRequest {
-    private int age;
-    private String name;
-    private int number;
-    private Gender gender;
-    private String emailId;
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class CustomerRequest {
+     int age;
+     String name;
+     Gender gender;
+     String emailId;
 
     // Getters and Setters
 }

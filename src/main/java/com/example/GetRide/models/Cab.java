@@ -12,6 +12,7 @@ import org.springframework.web.service.annotation.GetExchange;
 @Setter
 @Getter
 @Entity
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Cab {
 
@@ -27,11 +28,12 @@ public class Cab {
 
      double farePerKm;
 
+
      boolean booked;
 
-    @OneToOne
-    @JoinColumn
-     Driver driver;
+//    @OneToOne
+//    @JoinColumn
+//     Driver driver;
 
 
 }

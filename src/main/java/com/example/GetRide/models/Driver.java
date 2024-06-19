@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,30 +13,31 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Driver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     int id;
+    int id;
 
     @Column(name = "full_name")
      String name;
 
      int age;
-
+    
     @Column(unique = true, nullable = false)
      int mobileNo;
 
     @Column(unique = true, nullable = false)
      String drivingLicense;
 
-    @OneToOne(mappedBy = "driver")
-     Cab cab;
+//    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
+//     Cab cab;
 
 
 
-    @OneToMany(mappedBy = "driver")
-     List<Booking> bookings;
+//    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+//     List<Booking> bookings = new ArrayList<>();
 
 }
