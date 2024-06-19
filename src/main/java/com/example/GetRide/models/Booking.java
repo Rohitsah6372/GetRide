@@ -40,12 +40,12 @@ public class Booking {
 //    @CreationTimestamp
 //     Date date;
 //
-//    @ManyToOne
-//    @JoinColumn
-//     Customer coustomer;
-//
-//    @ManyToOne
-//    @JoinColumn
-//     Driver driver;
+    @ManyToOne
+    @JoinColumn
+     Customer coustomer;
+
+    @ManyToOne
+    @JoinColumn
+     Driver driver;
 
 }

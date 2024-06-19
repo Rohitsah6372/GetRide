@@ -31,9 +31,9 @@ public class Cab {
 
      boolean booked;
 
-//    @OneToOne
-//    @JoinColumn
-//     Driver driver;
+    @OneToOne
+    @JoinColumn
+    Driver driver;
 
 
 }

@@ -32,12 +32,12 @@ public class Driver {
     @Column(unique = true, nullable = false)
      String drivingLicense;
 
-//    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
-//     Cab cab;
+    @OneToOne(mappedBy = "driver", cascade = CascadeType.ALL)
+     Cab cab;
 
 
 
-//    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
-//     List<Booking> bookings = new ArrayList<>();
+    @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+    List<Booking> bookings = new ArrayList<>();
 
 }

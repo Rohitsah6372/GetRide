@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -28,5 +30,8 @@ public class Customer {
 
     @Column(unique = true, nullable = false)
      String emailId;
+
+    @OneToMany(mappedBy ="customer", cascade = CascadeType.ALL)
+    List<Booking> booking;
 
 }
