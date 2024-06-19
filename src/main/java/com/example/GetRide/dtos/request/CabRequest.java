@@ -1,20 +1,20 @@
 package com.example.GetRide.dtos.request;
 
-import com.example.GetRide.Enum.Gender;
+import com.example.GetRide.Enum.CabType;
 import jakarta.persistence.Entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@NoArgsConstructor
+
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
 @Setter
+@Getter
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CustomerRequest {
-     int age;
-     String name;
-     Gender gender;
-     String emailId;
+public class CabRequest {
 
+    String cabNumber;
+    CabType cabType;
+    double farePerKm;
 }

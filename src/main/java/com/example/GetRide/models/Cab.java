@@ -1,6 +1,7 @@
 package com.example.GetRide.models;
 
 import com.example.GetRide.Enum.CabType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -33,6 +34,7 @@ public class Cab {
 
     @OneToOne
     @JoinColumn
+    @JsonIgnore
     Driver driver;
 
 

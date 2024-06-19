@@ -1,5 +1,6 @@
 package com.example.GetRide.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -38,6 +39,7 @@ public class Driver {
 
 
     @OneToMany(mappedBy = "driver", cascade = CascadeType.ALL)
+    @JsonIgnore
     List<Booking> bookings = new ArrayList<>();
 
 }

@@ -42,7 +42,7 @@ public class Booking {
 //
     @ManyToOne
     @JoinColumn
-     Customer coustomer;
+     Customer customer;
 
     @ManyToOne
     @JoinColumn
