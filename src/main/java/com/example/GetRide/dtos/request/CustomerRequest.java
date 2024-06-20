@@ -16,5 +16,4 @@ public class CustomerRequest {
      String name;
      Gender gender;
      String emailId;
-
 }

@@ -17,6 +17,8 @@ import com.example.GetRide.repo.DriverRepo;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -27,17 +29,14 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class BookingService {
-
     private final BookingRepo bookingRepo;
-
-
     private final CustomerRepo customerRepo;
-
-
     private final CabRepo cabRepo;
-
-
     private final DriverRepo driverRepo;
+
+    @Autowired
+    JavaMailSender javaMailSender;
+
 
     public BookingResponse bookCab(BookingRequest bookingRequest) {
         Customer customer = customerRepo.findByEmailId(bookingRequest.getCustomerEmail());
@@ -68,7 +67,21 @@ public class BookingService {
         customerRepo.save(customer); //customer + booking
         driverRepo.save(driver); //driver + booking
 
+        sendEmail(savedBooking);
+
         //prepare response Dtos
         return BookingTransformer.bookingToBookingResponse(savedBooking);
+    }
+
+    private void sendEmail(Booking savedBooking) {
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom("rohitsahsah2000@gmail.com");
+        simpleMailMessage.setTo(savedBooking.getCustomer().getEmailId());
+        simpleMailMessage.setSubject("Booking Confirmed!!");
+        simpleMailMessage.setText("Congrats!! " + savedBooking.getCustomer().getName() +
+                " Your ride is confirmed " + " Your Booking Id is " + savedBooking.getBookingId());
+
+        javaMailSender.send(simpleMailMessage);
+
     }
 }
