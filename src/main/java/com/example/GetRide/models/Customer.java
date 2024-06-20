@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,6 +33,6 @@ public class Customer {
      String emailId;
 
     @OneToMany(mappedBy ="customer", cascade = CascadeType.ALL)
-    List<Booking> booking;
+    List<Booking> booking = new ArrayList<>();
 
 }
