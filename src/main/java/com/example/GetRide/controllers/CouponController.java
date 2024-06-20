@@ -3,15 +3,19 @@ package com.example.GetRide.controllers;
 
 import com.example.GetRide.models.Coupon;
 import com.example.GetRide.service.CouponService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/coupon")
+@RequiredArgsConstructor
 public class CouponController {
 
-    @Autowired
-    CouponService couponService;
+
+    private final CouponService couponService;
 
     @PostMapping
     public Coupon addCoupon(@RequestParam("code") String couponCode,

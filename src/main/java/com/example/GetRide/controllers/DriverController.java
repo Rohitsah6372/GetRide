@@ -5,6 +5,7 @@ import com.example.GetRide.dtos.request.DriverRequest;
 import com.example.GetRide.dtos.request.response.DriverResponse;
 import com.example.GetRide.models.Driver;
 import com.example.GetRide.service.DriverService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -15,10 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/driver")
+@RequiredArgsConstructor
 public class DriverController {
 
-    @Autowired
-    DriverService driverService;
+    private final DriverService driverService;
 
     @PostMapping
     public ResponseEntity<String> addDriverandCab(@RequestBody DriverRequest driverRequest){

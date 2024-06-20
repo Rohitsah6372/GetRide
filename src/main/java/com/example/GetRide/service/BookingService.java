@@ -14,6 +14,7 @@ import com.example.GetRide.repo.BookingRepo;
 import com.example.GetRide.repo.CabRepo;
 import com.example.GetRide.repo.CustomerRepo;
 import com.example.GetRide.repo.DriverRepo;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,19 +25,19 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BookingService {
 
-    @Autowired
-    BookingRepo bookingRepo;
+    private final BookingRepo bookingRepo;
 
-    @Autowired
-    CustomerRepo customerRepo;
 
-    @Autowired
-    CabRepo cabRepo;
+    private final CustomerRepo customerRepo;
 
-    @Autowired
-    DriverRepo driverRepo;
+
+    private final CabRepo cabRepo;
+
+
+    private final DriverRepo driverRepo;
 
     public BookingResponse bookCab(BookingRequest bookingRequest) {
         Customer customer = customerRepo.findByEmailId(bookingRequest.getCustomerEmail());

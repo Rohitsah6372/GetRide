@@ -6,6 +6,7 @@ import com.example.GetRide.dtos.request.CustomerRequest;
 import com.example.GetRide.dtos.request.response.CustomerResponse;
 import com.example.GetRide.models.Customer;
 import com.example.GetRide.repo.CustomerRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CustomerService {
 
-    @Autowired
-    private CustomerRepo customerRepo;
+    private final  CustomerRepo customerRepo;
 
     public CustomerResponse getCoustomer(String email) {
          Customer savedCustomer = customerRepo.findByEmailId(email);

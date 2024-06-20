@@ -9,6 +9,7 @@ import com.example.GetRide.dtos.request.response.DriverResponse;
 import com.example.GetRide.models.Cab;
 import com.example.GetRide.models.Driver;
 import com.example.GetRide.repo.DriverRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class DriverService {
 
-    @Autowired
-    DriverRepo driverRepo;
+
+    private final DriverRepo driverRepo;
 
     public String addDriverandCab(DriverRequest driverRequest) {
         Driver driver = DriverTransformer.driverReqToDriver(driverRequest);
