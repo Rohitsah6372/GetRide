@@ -1,9 +1,10 @@
 package com.example.GetRide.dtos.request;
 
 import com.example.GetRide.Enum.Gender;
-import jakarta.persistence.Entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,4 +17,10 @@ public class CustomerRequest {
      String name;
      Gender gender;
      String emailId;
+
+     @Builder.Default
+     boolean isActive = true;
+
+     @Builder.Default
+     LocalDateTime createdAt = LocalDateTime.now();
 }

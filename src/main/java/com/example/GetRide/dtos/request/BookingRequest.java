@@ -15,6 +15,6 @@ public class BookingRequest {
     String pickup;
     String dropLocation;
     double totalDistance;
-    String customerEmail;
+    String customerEmail; // customer email for finding the customer or we can take anything which is unique
 
 }

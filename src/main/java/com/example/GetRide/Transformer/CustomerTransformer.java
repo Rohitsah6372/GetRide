@@ -12,6 +12,8 @@ public class CustomerTransformer {
                 .age(customerRequest.getAge())
                 .emailId(customerRequest.getEmailId())
                 .gender(customerRequest.getGender())
+                .Active(customerRequest.isActive())
+                .createdAt(customerRequest.getCreatedAt())
                 .build();
     }
 
@@ -20,7 +22,10 @@ public class CustomerTransformer {
                 .emailId(customer.getEmailId())
                 .name(customer.getName())
                 .gender(customer.getGender())
+                .Active(customer.getActive())
+                .createdAt(customer.getCreatedAt())
                 .build();
     }
+
 
 }

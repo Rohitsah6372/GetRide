@@ -49,4 +49,17 @@ public class DriverService {
         }
         return driverResponses;
     }
+
+    public List<DriverResponse> getAllDriverWithNameStartsWithA() {
+        List<Driver> drivers = driverRepo.getAllDriverWithNameStartsWithA();
+        List<DriverResponse> driverResponses = new ArrayList<>();
+
+        for(Driver driver : drivers){
+            driverResponses.add(DriverTransformer.driverToDriverResponse(driver));
+
+        }
+
+        return driverResponses;
+
+    }
 }

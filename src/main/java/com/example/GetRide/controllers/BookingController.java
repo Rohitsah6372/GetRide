@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/book")
 @RequiredArgsConstructor
@@ -27,10 +29,24 @@ public class BookingController {
        }
     }
 
-    //find all the bookings done today
-    //get top k highest fares
-    //get top k lowesr fares
-    //get the customer with the highest fare booking
-    //get the customer with the lowest fare booking
+    @GetMapping("/top-k-lowest/{k}")
+    public ResponseEntity<List<BookingResponse>> getTopKLowestFares(@PathVariable int k) {
+        return ResponseEntity.ok(bookingService.getTopKLowestFares(k));
+    }
+
+    @GetMapping("/highest-fare")
+    public ResponseEntity<BookingResponse> getCustomerWithHighestFare() {
+        return ResponseEntity.ok(bookingService.getCustomerWithHighestFare());
+    }
+
+    @GetMapping("/lowest-fare")
+    public ResponseEntity<BookingResponse> getCustomerWithLowestFare() {
+        return ResponseEntity.ok(bookingService.getCustomerWithLowestFare());
+    }
+
+    @GetMapping("/bookings-today")
+    public ResponseEntity<List<BookingResponse>> findBookingsToday() {
+        return ResponseEntity.ok(bookingService.findBookingsToday());
+    }
 
 }

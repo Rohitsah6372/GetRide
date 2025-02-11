@@ -1,5 +1,6 @@
 package com.example.GetRide.repo;
 
+import com.example.GetRide.dtos.request.response.DriverResponse;
 import com.example.GetRide.models.Driver;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,7 @@ public interface DriverRepo extends JpaRepository<Driver, Integer> {
     @Query(value = "select d from Driver d where age >= :age")
     public List<Driver> getAllDriversbyAge(int age);
 
+
+    @Query(value = "select d from Driver d where name LIKE 'A%'")
+    List<Driver> getAllDriverWithNameStartsWithA();
 }

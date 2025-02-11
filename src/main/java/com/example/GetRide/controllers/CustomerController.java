@@ -32,10 +32,83 @@ public class CustomerController {
         return new ResponseEntity<>(customerResponse,HttpStatus.OK);
     }
 
+//
+//    @GetMapping("/customer-all")
+//    public ResponseEntity<List<CustomerResponse>> getAllCustomer(){
+//        return new ResponseEntity<>( customerService.getAllCustomers(), HttpStatus.OK);
+//    }
+
     @GetMapping("/gender/{gender}/age/{age}")
     public List<CustomerResponse> getAllByGenderandAgeGreaterThen(@PathVariable("gender") Gender gender,
                                                                   @PathVariable("age") int age){
         return customerService.getAllByGenderandAgeGreaterThen(gender, age);
     }
+
+    @PutMapping("/{email}")
+    public ResponseEntity<CustomerResponse> updateCustomer(@PathVariable("email") String email,
+                                                           @RequestBody CustomerRequest customerRequest) {
+        CustomerResponse updatedCustomer = customerService.updateCustomer(email, customerRequest);
+        return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("/{email}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable("email") String email) {
+        customerService.deleteCustomer(email);
+        return new ResponseEntity<>("Customer deleted successfully", HttpStatus.OK);
+    }
+
+
+    @GetMapping("/all")
+    public ResponseEntity<List<CustomerResponse>> getAllCustomers() {
+        List<CustomerResponse> customers = customerService.getAllCustomers();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/age-range")
+    public ResponseEntity<List<CustomerResponse>> getCustomersByAgeRange(@RequestParam("minAge") int minAge,
+                                                                         @RequestParam("maxAge") int maxAge) {
+        List<CustomerResponse> customers = customerService.getCustomersByAgeRange(minAge, maxAge);
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/search")
+    public ResponseEntity<List<CustomerResponse>> searchCustomersByName(@RequestParam("name") String name) {
+        List<CustomerResponse> customers = customerService.searchCustomersByName(name);
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/count/gender/{gender}")
+    public ResponseEntity<Long> countCustomersByGender(@PathVariable("gender") Gender gender) {
+        long count = customerService.countCustomersByGender(gender);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
+    @PatchMapping("/deactivate/{email}")
+    public ResponseEntity<String> deactivateCustomer(@PathVariable("email") String email) {
+        customerService.deactivateCustomer(email);
+        return new ResponseEntity<>("Customer account deactivated", HttpStatus.OK);
+    }
+
+
+    @PatchMapping("/reactivate/{email}")
+    public ResponseEntity<String> reactivateCustomer(@PathVariable("email") String email) {
+        customerService.reactivateCustomer(email);
+        return new ResponseEntity<>("Customer account reactivated", HttpStatus.OK);
+    }
+
+
+
+
+    @DeleteMapping
+    public String deleteALLCoustomer(){
+        customerService.deleteALLCoustomer();
+        return "Done";
+    }
+
+
 
 }

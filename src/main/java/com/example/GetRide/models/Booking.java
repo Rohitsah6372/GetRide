@@ -39,10 +39,10 @@ public class Booking {
 
 //    @CreationTimestamp
 //     Date date;
-//
+
     @ManyToOne
     @JoinColumn
-     Customer customer;
+    Customer customer;
 
     @ManyToOne
     @JoinColumn

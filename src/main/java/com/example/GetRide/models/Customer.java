@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,11 @@ public class Customer {
      String emailId;
 
     @OneToMany(mappedBy ="customer", cascade = CascadeType.ALL)
-    List<Booking> booking = new ArrayList<>();
+    List<Booking> booking;
+
+    Boolean Active;
+
+//    @Column(updatable = false)
+    private LocalDateTime createdAt;
 
 }

@@ -20,22 +20,14 @@ public class Cab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      int id;
-
-
     @Column(unique = true, nullable = false)
      String cabNumber;
-
      CabType cabType;
-
      double farePerKm;
-
-
      boolean booked;
 
     @OneToOne
     @JoinColumn
     @JsonIgnore
     Driver driver;
-
-
 }

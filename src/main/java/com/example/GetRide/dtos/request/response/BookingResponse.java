@@ -20,7 +20,6 @@ public class BookingResponse {
     BookingStatus bookingStatus;
     double totalDistance;
     double totalFare;
-
     Date bookedAt;
     CustomerResponse customerResponse;
     DriverResponse driverResponse;
