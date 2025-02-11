@@ -11,11 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 public interface BookingRepo extends JpaRepository<Booking, Integer> {
-
-
     @Query("SELECT b FROM Booking b WHERE b.bookedAt BETWEEN :startOfDay AND :endOfDay")
     List<Booking> findByBookedAtBetween(Date startOfDay, Date endOfDay);
-
+//
     @Query("SELECT b FROM Booking b ORDER BY b.totalFare DESC")
     List<Booking> getTopKHighestFares(Pageable pageable);
 
